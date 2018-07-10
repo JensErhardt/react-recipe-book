@@ -8,6 +8,7 @@ import Home from './Home';
 // import Signup from './Signup';
 
 import Dishes from './Dishes';
+import DishDetail from './DishDetail'
 
 import api from '../api';
 import logo from '../logo.svg';
@@ -32,7 +33,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to the React Recipe Book</h1>
           <Link to="/">Home</Link> 
-          <Link to="/dishes">Dishes</Link> 
+          <Link to="/dishes">Dishes</Link>
           
           {/* <Link to="/add-country">Add country</Link> 
           {!api.isLoggedIn() && <Link to="/signup">Signup</Link> }
@@ -43,6 +44,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/dishes" exact component={Dishes} />
+          <Route path="/:id" exact component={DishDetail} />
           {/* <Route path="/countries" component={Countries} />
           <Route path="/add-country" component={AddCountry} />
           <Route path="/signup" component={Signup} />

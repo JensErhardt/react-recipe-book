@@ -26,6 +26,13 @@ export default {
     .catch(errHandler);
   },
 
+  getDishDetails() {
+    return service
+    .get('/dishes/:id')
+    .then(res => res.data)
+    .catch(errHandler)
+  },
+
   postCountries(data) {
     return service
       .post('/countries', data)

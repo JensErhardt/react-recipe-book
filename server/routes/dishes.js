@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 });
 // Route to get one specific dish
 router.get('/:id', (req, res, next) => {
-  console.log("params", req.params)
+  console.log("dishDetailRoute")
   Dish.findById(req.params.id)
     .then(dishDetail => {
       res.json(dishDetail)
@@ -22,6 +22,7 @@ router.get('/:id', (req, res, next) => {
 });
 // Route to update one specific dish
 router.put('/:id', (req, res, next) => {
+
   Dish.findByIdAndUpdate(req.params.id)
     .then(dishDetail => {
       //PUT QUERY HERE<-----------------------------
