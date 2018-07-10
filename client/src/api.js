@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3030/api',
+  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3031/api',
 });
 
 const errHandler = err => {
@@ -26,10 +26,13 @@ export default {
     .catch(errHandler);
   },
 
-  getDishDetails() {
+  getDishDetails(id) {
     return service
-    .get('/dishes/:id')
-    .then(res => res.data)
+    .get(`/dishes/${id}`)
+    .then(res => {
+      console.log("api", res.data)
+      return res.data
+    })
     .catch(errHandler)
   },
 

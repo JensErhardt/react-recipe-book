@@ -13,7 +13,9 @@ router.get('/', (req, res, next) => {
 });
 // Route to get one specific dish
 router.get('/:id', (req, res, next) => {
-  console.log("dishDetailRoute")
+  console.log("dishDetail", req.params)
+  let dishId = req.params.id;
+  console.log("dishId", dishId)
   Dish.findById(req.params.id)
     .then(dishDetail => {
       res.json(dishDetail)

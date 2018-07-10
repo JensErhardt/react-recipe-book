@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import api from '../api';
+import { Link, Route } from 'react-router-dom';
+import DishDetail from './DishDetail';
 
 class Dishes extends Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class Dishes extends Component {
   componentDidMount() {
     api.getDishes()
       .then(dishes => {
-        console.log("Dishes displayed")
+        console.log("getDishes")
         this.setState({
           dishes
         })
@@ -23,8 +25,11 @@ class Dishes extends Component {
     return (
       <div className="Dishes">
         <h2>Dishes</h2>
-        {this.state.dishes.map((e, i) => 
-        <li key={i}>{e.name}</li>)}
+        <ul>
+          {this.state.dishes.map((e, i) =>
+            <li key={i}><Link to={"/dishes/" + e._id}>{e.name}</Link></li>)}
+        </ul>
+        <Route path="/dish/:id" component={DishDetail}/>
       </div>
     )
   }

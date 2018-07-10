@@ -8,11 +8,10 @@ class DishDetail extends Component {
       dish: []
     }
   }
-
   componentDidMount() {
-    api.getDishDetails()
+    api.getDishDetails(this.props.match.params.id)
       .then(dishDetails => {
-        console.log("getDishDetails")
+        console.log("getDishDetails", dishDetails)
         this.setState({
           dish: dishDetails
         })
@@ -24,7 +23,8 @@ class DishDetail extends Component {
     <div className="dishDetails">
       <h2>Dish Details</h2>
       Name: {this.state.dish.name} <br />
-      Number: {this.state.dish.description} <br />
+      Description: {this.state.dish.description} <br />
+      <img src={this.state.dish.image} alt="dish-pic" width="200" />
     </div>
     )}
 }
